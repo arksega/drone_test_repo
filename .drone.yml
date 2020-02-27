@@ -9,6 +9,7 @@ steps:
   commands:
   - go test
   - go build
+
 - name: gitea_release
   image: plugins/gitea-release
   settings:
