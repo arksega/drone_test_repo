@@ -12,9 +12,6 @@ steps:
 
 - name: gitea_release
   image: plugins/gitea-release
-  commands:
-  - pwd
-  - ls -al
   settings:
     api_key:
       from_secret: gitea_api_key
