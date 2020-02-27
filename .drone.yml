@@ -12,11 +12,19 @@ steps:
 - name: build
   image: golang:alpine
   commands:
+  - go test
+  - go build
+
+- name: package
+  image: golang:alpine
+  commands:
   - apk update
   - apk add zip git
   - mkdir -p testorepo/bin
   - go build -o testorepo/bin/saludeyshon
   - zip -r testorepo-$(git describe --tags).zip testorepo/
+  when:
+    event: tag
 
 - name: gitea_release
   image: plugins/gitea-release
@@ -25,7 +33,6 @@ steps:
       from_secret: gitea_api_key
     base_url: http://gitea:3000
     checksum:
-      - md5
       - sha1
     files:
     - testorepo*zip
