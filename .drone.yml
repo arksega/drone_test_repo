@@ -32,8 +32,6 @@ steps:
     api_key:
       from_secret: gitea_api_key
     base_url: http://gitea:3000
-    checksum:
-      - sha1
     files:
     - testorepo*zip
   when:
