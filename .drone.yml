@@ -8,7 +8,9 @@ steps:
   image: golang:alpine
   commands:
   - go test
-  - go build -x -o saludeyshon
+  - mkdir bin
+  - go build -x -o bin/saludeyshon
+  - ls -al bin/
 
 - name: gitea_release
   image: plugins/gitea-release
@@ -20,6 +22,6 @@ steps:
       - md5
       - sha1
     files:
-    - saludeyshon
+    - bin/
   when:
     event: tag
