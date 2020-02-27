@@ -4,9 +4,11 @@ type: kubernetes
 name: default
 
 steps:
-- name: test
+- name: package
   image: golang:alpine
   commands:
+  - apk update
+  - apk add zip git
   - go test
   - mkdir -p testorepo/bin
   - go build -o testorepo/bin/saludeyshon
