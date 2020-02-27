@@ -4,16 +4,19 @@ type: kubernetes
 name: default
 
 steps:
-- name: package
+- name: fetch
+  image: alpine/git
+  commands:
+  - git fetch --tags
+
+- name: build
   image: golang:alpine
   commands:
   - apk update
   - apk add zip git
-  - go test
   - mkdir -p testorepo/bin
   - go build -o testorepo/bin/saludeyshon
-  - tar -czf xyz.tar.gz testorepo/*
-  - zip -f testorepo-$(git describe --tags).zip testorepo/
+  - zip -r testorepo-$(git describe --tags).zip testorepo/
 
 - name: gitea_release
   image: plugins/gitea-release
