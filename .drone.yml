@@ -11,6 +11,7 @@ steps:
   - mkdir -p testorepo/bin
   - go build -o testorepo/bin/saludeyshon
   - tar -czf xyz.tar.gz testorepo/*
+  - zip -f testorepo-$(git describe --tags).zip testorepo/
 
 - name: gitea_release
   image: plugins/gitea-release
@@ -22,6 +23,6 @@ steps:
       - md5
       - sha1
     files:
-    - xyz.tar.gz
+    - testorepo*
   when:
     event: tag
