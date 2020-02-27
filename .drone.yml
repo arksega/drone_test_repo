@@ -9,3 +9,12 @@ steps:
   commands:
   - go test
   - go build
+- name: gitea_release
+  image: plugins/gitea-release
+  settings:
+    api_key:
+      from_secret: gitea_api_key
+    base_url: http://gitea:3000
+    files: testorepo
+  when:
+    event: tag
