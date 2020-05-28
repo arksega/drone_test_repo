@@ -3,6 +3,9 @@ kind: pipeline
 type: kubernetes
 name: default
 
+clone:
+  disable: true
+
 steps:
 - name: clone
   image: alpine/git
