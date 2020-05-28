@@ -11,7 +11,7 @@ steps:
   image: alpine/git
   commands:
   - pwd
-  - sleep 10s
+  - sleep 15s
   - git clone http://gitea:3000/${DRONE_REPO}.git .
   - git checkout $DRONE_COMMIT
 
