@@ -34,6 +34,7 @@ steps:
   - mkdir -p testorepo/bin
   - go build -o testorepo/bin/saludeyshon
   - zip -r testorepo-$(git describe --tags).zip testorepo/
+  - echo $(git describe --tags) > title.txt
   when:
     event: tag
 
@@ -45,6 +46,6 @@ steps:
     base_url: http://gitea:3000
     files:
     - testorepo*zip
-    #title: $(git describe --tags)
+    title: title.txt
   when:
     event: tag
