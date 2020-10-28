@@ -45,6 +45,6 @@ steps:
     base_url: http://gitea:3000
     files:
     - testorepo*zip
-    title: 0.0.1
+    title: $(git describe --tags)
   when:
     event: tag
