@@ -45,5 +45,6 @@ steps:
     base_url: http://gitea:3000
     files:
     - testorepo*zip
+    title: 0.0.1
   when:
     event: tag
